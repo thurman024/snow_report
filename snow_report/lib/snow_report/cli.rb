@@ -51,9 +51,12 @@ class SnowReport::CLI
 
   def runs
     #sort by runs open
-    runs_data = SnowReport::Mountains.all.sort_by!(&:runs_open).reverse
-    runs_data.each do |resort|
-      puts "#{resort.name} - #{resort.state} - #{resort.runs_open}"
+    runs_data = SnowReport::Mountains.all
+    runs_data.sort_by! {|obj| -obj.runs_open[0].to_i}
+    runs_data.each_with_index do |resort, i|
+      if i < 10
+        puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.runs_open.join("/")}"
+      end
     end
   end
 end

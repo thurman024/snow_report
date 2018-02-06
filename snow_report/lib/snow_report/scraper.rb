@@ -16,7 +16,7 @@ class SnowReport::Scraper
           :snowfall => row.css(".rLeft.b b")[1].text,
           :base_depth => row.css(".rMid.c b").text,
           :link => row.css(".rMid.c a").attribute("href").value, #(needs full web link)
-          :runs_open => row.css("td.rMid")[3].text
+          :runs_open => row.css("td.rMid")[3].text.strip.split("/")
         }
         mountains << mountain_hash
       end
