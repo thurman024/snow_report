@@ -20,26 +20,38 @@ class SnowReport::CLI
       case command
       when "snowfall"
         #sort by snowfall method
-        puts "Mountain A: 14 in. snowfall"
+        snowfall
       when "depth"
         # sort by depth method
-        puts "Mountain A: 44 in base depth"
+        depth
       when "runs"
         # sort by runs method
-        puts "Mountain A: 50/60 runs open"
+        runs
       end
     end
   end
 
   def snowfall
     #sort by snowfall
+    snowfall_data = SnowReport::Mountains.all.sortby!(&:snowfall)
+    snowfall_data.each do |resort|
+      puts "#{resort.name} - #{resort.state} - #{resort.snowfall}"
+    end
   end
 
   def depth
     #sort by depth
+    depth_data = SnowReport::Mountains.all.sortby!(&:depth)
+    depth_data.each do |resort|
+      puts "#{resort.name} - #{resort.state} - #{resort.base_depth}"
+    end
   end
 
   def runs
     #sort by runs open
+    runs_data = SnowReport::Mountains.all.sortby!(&:runs_open)
+    runs_data.each do |resort|
+      puts "#{resort.name} - #{resort.state} - #{resort.runs_open}"
+    end
   end
 end
