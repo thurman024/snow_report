@@ -19,7 +19,7 @@ class SnowReport::Mountains
     :state => "Colorado",
     :snowfall => "11",
     :link => "https://onthesnow.com/resort",
-    :runs_open => "64/72",
+    :runs_open => "64/100",
     :base_depth => "38"
   }
   attributes_2 = {

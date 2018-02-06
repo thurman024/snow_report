@@ -33,7 +33,7 @@ class SnowReport::CLI
 
   def snowfall
     #sort by snowfall
-    snowfall_data = SnowReport::Mountains.all.sortby!(&:snowfall)
+    snowfall_data = SnowReport::Mountains.all.sort_by!(&:snowfall).reverse
     snowfall_data.each do |resort|
       puts "#{resort.name} - #{resort.state} - #{resort.snowfall}"
     end
@@ -41,7 +41,7 @@ class SnowReport::CLI
 
   def depth
     #sort by depth
-    depth_data = SnowReport::Mountains.all.sortby!(&:depth)
+    depth_data = SnowReport::Mountains.all.sort_by!(&:base_depth).reverse
     depth_data.each do |resort|
       puts "#{resort.name} - #{resort.state} - #{resort.base_depth}"
     end
@@ -49,7 +49,7 @@ class SnowReport::CLI
 
   def runs
     #sort by runs open
-    runs_data = SnowReport::Mountains.all.sortby!(&:runs_open)
+    runs_data = SnowReport::Mountains.all.sort_by!(&:runs_open).reverse
     runs_data.each do |resort|
       puts "#{resort.name} - #{resort.state} - #{resort.runs_open}"
     end
