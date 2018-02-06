@@ -1,12 +1,14 @@
 class SnowReport::CLI
 
   def start
+    rocky_mtn_array = SnowReport::Scraper.scrape_from_web("https://onthesnow.com/rocky-mountain/skireport.html")
+    SnowReport::Mountains.new_by_collection(rocky_mtn_array)
     puts "Welcome to Snow Report!"
     puts "Here are possible ways to view snow reports:"
     puts " COMMAND ......... OUTPUT"
     puts " snowfall ........ Top 10 resorts by 72-hr snowfall"
     puts " depth ........... Top 10 resorts by base depth"
-    puts " runs ............ Top 10 resorts by most open runs"
+    puts " runs ............ Top 10 resorts by open runs"
     puts " [state] ......... List of resorts in that state"
     puts " [resort] ........ All data for that resort"
     puts " exit ............ Quit program"

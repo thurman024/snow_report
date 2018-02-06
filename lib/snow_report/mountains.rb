@@ -14,24 +14,11 @@ class SnowReport::Mountains
     SnowReport::Mountains.new(hash)
   end
 
-  attributes_1 = {
-    :name => "Mountain A",
-    :state => "Colorado",
-    :snowfall => "11",
-    :link => "https://onthesnow.com/resort",
-    :runs_open => "64/100",
-    :base_depth => "38"
-  }
-  attributes_2 = {
-    :name => "Mountain B",
-    :state => "California",
-    :snowfall => "15",
-    :link => "https://onthesnow.com/resort",
-    :runs_open => "49/54",
-    :base_depth => "42"
-  }
+  def self.new_by_collection(array)
+    array.each {|hash| self.new_by_attributes(hash)}
+  end
 
-  a = SnowReport::Mountains.new_by_attributes(attributes_1)
-  b = SnowReport::Mountains.new_by_attributes(attributes_2)
-
+  #create from Scraper
+  # rocky_mtn_array = SnowReport::Scraper.scrape_from_web("https://onthesnow.com/rocky-mountain/skireport.html")
+  # SnowReport::Mountains.new_by_collection(rocky_mtn_array)
 end

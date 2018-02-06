@@ -21,8 +21,8 @@ class SnowReport::Scraper
         mountains << mountain_hash
       end
     end
-
-    binding.pry
+    mountains
   end
+
+
 end
-SnowReport::Scraper.scrape_from_web("https://onthesnow.com/rocky-mountain/skireport.html")
