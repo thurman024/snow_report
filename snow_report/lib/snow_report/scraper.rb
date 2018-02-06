@@ -12,7 +12,7 @@ class SnowReport::Scraper
           # binding.pry
         mountain_hash = {
           :name => row.css(".name").text,
-          :state => row.css(".rRegion").text,
+          :state => row.css(".rRegion").text.split(",")[0],
           :snowfall => row.css(".rLeft.b b")[1].text.chomp("\""),
           :base_depth => row.css(".rMid.c b").text.strip.split(" - ")[0].chomp("\""),
           :link => row.css(".rMid.c a").attribute("href").value, #(needs full web link)

@@ -29,6 +29,10 @@ class SnowReport::CLI
       when "runs"
         # sort by runs method
         runs
+      else
+        if SnowReport::Mountains.find_all_in_state(command)
+          list_from_state(command)
+        end
       end
     end
   end
@@ -63,6 +67,13 @@ class SnowReport::CLI
       if i < 10
         puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.runs_open.join("/")}"
       end
+    end
+  end
+
+  def list_from_state(state)
+    states_resorts = SnowReport::Mountains.find_all_in_state(state)
+    states_resorts.each do |resort|
+      puts "#{resort.name} - Base depth: #{resort.base_depth}\" - 72hr Snowfall: #{resort.snowfall}\" - Runs Open: #{resort.runs_open.join("/")}"
     end
   end
 end

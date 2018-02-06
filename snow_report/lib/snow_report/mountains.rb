@@ -18,6 +18,10 @@ class SnowReport::Mountains
     array.each {|hash| self.new_by_attributes(hash)}
   end
 
+  def self.find_all_in_state(state)
+    SnowReport::Mountains.all.select {|obj| obj.state == state.capitalize}
+  end
+
   #create from Scraper
   # rocky_mtn_array = SnowReport::Scraper.scrape_from_web("https://onthesnow.com/rocky-mountain/skireport.html")
   # SnowReport::Mountains.new_by_collection(rocky_mtn_array)
