@@ -1,5 +1,5 @@
 class SnowReport::CLI
-  
+
   def start
     puts "Welcome to Snow Report!"
     puts "Here are possible ways to view snow reports:"
@@ -9,6 +9,7 @@ class SnowReport::CLI
     puts " runs ............ Top 10 resorts by most open runs"
     puts " [state] ......... List of resorts in that state"
     puts " [resort] ........ All data for that resort"
+    puts " exit ............ Quit program"
     run
   end
 
@@ -28,5 +29,17 @@ class SnowReport::CLI
         puts "Mountain A: 50/60 runs open"
       end
     end
+  end
+
+  def snowfall
+    #sort by snowfall
+  end
+
+  def depth
+    #sort by depth
+  end
+
+  def runs
+    #sort by runs open
   end
 end
