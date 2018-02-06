@@ -35,17 +35,23 @@ class SnowReport::CLI
 
   def snowfall
     #sort by snowfall
-    snowfall_data = SnowReport::Mountains.all.sort_by!(&:snowfall).reverse
-    snowfall_data.each do |resort|
-      puts "#{resort.name} - #{resort.state} - #{resort.snowfall}"
+    snowfall_data = SnowReport::Mountains.all
+    snowfall_data.sort_by! {|obj| -obj.snowfall.to_i}
+    snowfall_data.each_with_index do |resort, i|
+      if i < 10
+        puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.snowfall} inches"
+      end
     end
   end
 
   def depth
     #sort by depth
-    depth_data = SnowReport::Mountains.all.sort_by!(&:base_depth).reverse
-    depth_data.each do |resort|
-      puts "#{resort.name} - #{resort.state} - #{resort.base_depth}"
+    depth_data = SnowReport::Mountains.all
+    depth_data.sort_by! {|obj| -obj.base_depth.to_i}
+    depth_data.each_with_index do |resort, i|
+      if i < 10
+        puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.base_depth} inches"
+      end
     end
   end
 
