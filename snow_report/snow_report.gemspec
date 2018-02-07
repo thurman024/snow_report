@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["thurman024"]
   spec.email         = ["33437392+thurman024@users.noreply.github.com"]
 
-  spec.summary       = %q{Write a short summary, because RubyGems requires one.}
+  spec.summary       = "Provides snow condition data for various US ski resorts"
   spec.homepage      = "website: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir        = "bin"
+  spec.executables   << "snow-report"
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
 
   spec.add_dependency "nokogiri"
-  
+
 end

@@ -23,6 +23,6 @@ class SnowReport::Mountains
   end
 
   def self.find_resort(resort)
-    SnowReport::Mountains.all.find {|obj| obj.name.downcase == resort}
+    SnowReport::Mountains.all.detect {|obj| obj.name.downcase == resort}
   end
 end
