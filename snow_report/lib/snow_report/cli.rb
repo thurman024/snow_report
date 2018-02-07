@@ -8,9 +8,9 @@ class SnowReport::CLI
     puts "Welcome to Snow Report!"
     puts "Here are possible ways to view snow reports:"
     puts " COMMAND ......... OUTPUT"
-    puts " snowfall ........ Top 10 resorts by 72-hr snowfall"
-    puts " depth ........... Top 10 resorts by base depth"
-    puts " runs ............ Top 10 resorts by open runs"
+    puts " snowfall ........ Top 20 resorts by 72-hr snowfall"
+    puts " depth ........... Top 20 resorts by base depth"
+    puts " runs ............ Top 20 resorts by open runs"
     puts " [state] ......... List of resorts in that state"
     puts " [resort] ........ All data for that resort"
     puts " exit ............ Quit program"
@@ -52,7 +52,7 @@ class SnowReport::CLI
     snowfall_data = SnowReport::Mountains.all
     snowfall_data.sort_by! {|obj| -obj.snowfall.to_i}
     snowfall_data.each_with_index do |resort, i|
-      if i < 10
+      if i < 20
         puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.snowfall} inches"
       end
     end
@@ -63,7 +63,7 @@ class SnowReport::CLI
     depth_data = SnowReport::Mountains.all
     depth_data.sort_by! {|obj| -obj.base_depth.to_i}
     depth_data.each_with_index do |resort, i|
-      if i < 10
+      if i < 20
         puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.base_depth} inches"
       end
     end
@@ -74,7 +74,7 @@ class SnowReport::CLI
     runs_data = SnowReport::Mountains.all
     runs_data.sort_by! {|obj| -obj.runs_open[0].to_i}
     runs_data.each_with_index do |resort, i|
-      if i < 10
+      if i < 20
         puts "#{i+1}. #{resort.name} - #{resort.state} - #{resort.runs_open.join("/")}"
       end
     end
