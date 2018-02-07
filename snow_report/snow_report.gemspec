@@ -10,21 +10,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["33437392+thurman024@users.noreply.github.com"]
 
   spec.summary       = "Provides snow condition data for various US ski resorts"
-  spec.homepage      = "website: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/thurman024/snow_report"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
-
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files         = ["lib/snow_report.rb", "lib/snow_report/cli.rb", "lib/snow_report/mountains.rb", "lib/snow_report/scraper.rb"]
   spec.bindir        = "bin"
   spec.executables   << "snow-report"
   spec.require_paths = ["lib"]
