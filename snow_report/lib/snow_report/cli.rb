@@ -5,6 +5,10 @@ class SnowReport::CLI
     SnowReport::Mountains.new_by_collection(rocky_mtn_array)
     west_coast_array = SnowReport::Scraper.scrape_from_web("https://onthesnow.com/west-coast/skireport.html")
     SnowReport::Mountains.new_by_collection(west_coast_array)
+    run
+  end
+
+  def main_menu
     puts "Welcome to Snow Report!"
     puts "Here are possible ways to view snow reports:"
     puts " COMMAND ......... OUTPUT"
@@ -14,36 +18,32 @@ class SnowReport::CLI
     puts " [state] ......... List of resorts in that state"
     puts " [resort] ........ All data for that resort"
     puts " exit ............ Quit program"
-    run
   end
 
   def run
+    main_menu
     command = nil
     until command == "exit"
       command = gets.downcase.chomp
-      case command
-      when "snowfall"
+      if command == "snowfall"
         #sort by snowfall method
         snowfall
-      when "depth"
+      elsif command == "depth"
         # sort by depth method
         depth
-      when "runs"
+      elsif command == "runs"
         # sort by runs method
         runs
+      elsif command == "menu"
+        main_menu
+      elsif SnowReport::Mountains.find_all_in_state(command)
+        list_from_state(command)
+      elsif SnowReport::Mountains.find_resort(command)
+        print_resort(command)
       else
-        if SnowReport::Mountains.find_all_in_state(command)
-          list_from_state(command)
-        elsif SnowReport::Mountains.find_resort(command)
-          print_resort(command)
-        else
-          puts "Not a valid input ... try again or type 'menu' to see available commands"
-          input = gets.downcase.chomp
-          if input == "menu"
-            run
-          end
-        end
+        puts "Not a valid input ... try again or type 'menu' to see available commands"
       end
+
     end
   end
 

@@ -1,6 +1,6 @@
-require 'pry'
-require 'open-uri'
-require 'nokogiri'
+# require 'pry'
+# require 'open-uri'
+# require 'nokogiri'
 class SnowReport::Scraper
   def self.scrape_from_web(url)
     html = open(url)
