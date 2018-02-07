@@ -1,4 +1,4 @@
-require "snow_report/version"
+require_relative "snow_report/version"
 
 require_relative "snow_report/cli"
 require_relative "snow_report/scraper"

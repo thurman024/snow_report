@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "snow_report"
+require_relative "../lib/snow_report"
 
 SnowReport::CLI.new.start

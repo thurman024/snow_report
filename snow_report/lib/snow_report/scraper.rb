@@ -8,7 +8,7 @@ class SnowReport::Scraper
     mountains = []
     table = doc.css(".resortList tr")
     table.each_with_index do |row, i|
-      if i > 1 && i < table.size - 3
+      if i > 1 && i < table.size - 6
           # binding.pry
         mountain_hash = {
           :name => row.css(".name").text,
