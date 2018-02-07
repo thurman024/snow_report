@@ -25,6 +25,7 @@ class SnowReport::CLI
     command = nil
     until command == "exit"
       command = gets.downcase.chomp
+      # binding.pry
       if command == "snowfall"
         #sort by snowfall method
         snowfall
@@ -36,10 +37,10 @@ class SnowReport::CLI
         runs
       elsif command == "menu"
         main_menu
-      elsif SnowReport::Mountains.find_all_in_state(command)
-        list_from_state(command)
       elsif SnowReport::Mountains.find_resort(command)
         print_resort(command)
+      elsif SnowReport::Mountains.find_all_in_state(command)
+        list_from_state(command)
       else
         puts "Not a valid input ... try again or type 'menu' to see available commands"
       end
@@ -88,6 +89,11 @@ class SnowReport::CLI
   end
 
   def print_resort(resort)
-    puts "this is your resort? #{resort}"
+    res = SnowReport::Mountains.find_resort(resort)
+    puts "#{res.name}, #{res.state}"
+    puts "Base Depth: #{res.base_depth}"
+    puts "72hr Snowfall: #{res.snowfall}"
+    puts "Runs Open: #{res.runs_open.join("/")}"
+    puts "Full Report: https://onthesnow.com" + "#{res.link}"
   end
 end
