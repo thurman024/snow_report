@@ -19,7 +19,11 @@ class SnowReport::Mountains
   end
 
   def self.find_all_in_state(state)
-    SnowReport::Mountains.all.select {|obj| obj.state.downcase == state}
+    states_resorts = SnowReport::Mountains.all.select {|obj| obj.state.downcase == state}
+    if states_resorts.size == 0
+      return nil
+    end
+    states_resorts
   end
 
   def self.find_resort(resort)

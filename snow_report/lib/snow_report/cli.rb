@@ -42,14 +42,14 @@ class SnowReport::CLI
       elsif SnowReport::Mountains.find_all_in_state(command)
         list_from_state(command)
       else
-        puts "Not a valid input ... try again or type 'menu' to see available commands"
+        puts "Not a valid input ... try again or type 'menu' to see available commands" unless command == "exit"
       end
 
     end
   end
 
   def snowfall
-    #sort by snowfall
+    puts "----------"
     snowfall_data = SnowReport::Mountains.all
     snowfall_data.sort_by! {|obj| -obj.snowfall.to_i}
     snowfall_data.each_with_index do |resort, i|
@@ -60,7 +60,7 @@ class SnowReport::CLI
   end
 
   def depth
-    #sort by depth
+    puts "----------"
     depth_data = SnowReport::Mountains.all
     depth_data.sort_by! {|obj| -obj.base_depth.to_i}
     depth_data.each_with_index do |resort, i|
@@ -71,7 +71,7 @@ class SnowReport::CLI
   end
 
   def runs
-    #sort by runs open
+    puts "----------"
     runs_data = SnowReport::Mountains.all
     runs_data.sort_by! {|obj| -obj.runs_open[0].to_i}
     runs_data.each_with_index do |resort, i|
@@ -82,6 +82,7 @@ class SnowReport::CLI
   end
 
   def list_from_state(state)
+    puts "----------"
     states_resorts = SnowReport::Mountains.find_all_in_state(state)
     states_resorts.each do |resort|
       puts "#{resort.name} - Base depth: #{resort.base_depth}\" - 72hr Snowfall: #{resort.snowfall}\" - Runs Open: #{resort.runs_open.join("/")}"
@@ -90,9 +91,10 @@ class SnowReport::CLI
 
   def print_resort(resort)
     res = SnowReport::Mountains.find_resort(resort)
+    puts "----------"
     puts "#{res.name}, #{res.state}"
-    puts "Base Depth: #{res.base_depth}"
-    puts "72hr Snowfall: #{res.snowfall}"
+    puts "Base Depth: #{res.base_depth} inches"
+    puts "72hr Snowfall: #{res.snowfall} inches"
     puts "Runs Open: #{res.runs_open.join("/")}"
     puts "Full Report: https://onthesnow.com" + "#{res.link}"
   end
