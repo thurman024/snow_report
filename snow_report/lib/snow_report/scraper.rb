@@ -1,6 +1,4 @@
-# require 'pry'
-# require 'open-uri'
-# require 'nokogiri'
+
 class SnowReport::Scraper
   def self.scrape_from_web(url)
     html = open(url)
@@ -9,7 +7,6 @@ class SnowReport::Scraper
     table = doc.css(".resortList tr")
     table.each_with_index do |row, i|
       if i > 1 && i < table.size - 6
-          # binding.pry
         mountain_hash = {
           :name => row.css(".name").text,
           :state => row.css(".rRegion").text.split(",")[0],
@@ -23,6 +20,4 @@ class SnowReport::Scraper
     end
     mountains
   end
-
-
 end

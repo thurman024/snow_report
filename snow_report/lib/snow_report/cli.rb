@@ -25,7 +25,6 @@ class SnowReport::CLI
     command = nil
     until command == "exit"
       command = gets.downcase.chomp
-      # binding.pry
       if command == "snowfall"
         #sort by snowfall method
         snowfall
