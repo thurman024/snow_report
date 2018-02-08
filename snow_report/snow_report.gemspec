@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/thurman024/snow_report"
   spec.license       = "MIT"
 
-  spec.files         = ["lib/snow_report.rb", "lib/snow_report/cli.rb", "lib/snow_report/mountains.rb", "lib/snow_report/scraper.rb"]
+  spec.files         = ["lib/snow_report.rb", "lib/snow_report/cli.rb", "lib/snow_report/mountains.rb", "lib/snow_report/scraper.rb", "lib/snow_report/version.rb"]
   spec.bindir        = "bin"
   spec.executables   << "snow-report"
   spec.require_paths = ["lib"]
